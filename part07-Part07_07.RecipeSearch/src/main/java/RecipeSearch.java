@@ -37,8 +37,10 @@ public class RecipeSearch {
                     // check that recipeName and cookingTime aren't null, so we can add the properties to a new Recipe-object
                     if (!recipeName.equals("") && cookingTime != 0) {
                         // add values to new Recipe-object
-                        Recipe newRecipe = new Recipe(recipeName, cookingTime);
+                        Recipe newRecipe = new Recipe(recipeName, cookingTime, ingredients);
                         recipeList.addRecipe(newRecipe);
+                        // clear ingredient list so they're not copied to following recipes. clear() doesn't work because it only clears the local instance, so we have to re-initialize the list
+                        ingredients = new ArrayList<>();
                     }
 
                     row = fileScanner.nextLine();
@@ -66,7 +68,7 @@ public class RecipeSearch {
             // add final recipe
             if (!recipeName.equals("") && cookingTime != 0) {
                 // add functionality to create new recipe here...
-                Recipe newRecipe = new Recipe(recipeName, cookingTime);
+                Recipe newRecipe = new Recipe(recipeName, cookingTime, ingredients);
                 recipeList.addRecipe(newRecipe);
             }
 
@@ -80,6 +82,7 @@ public class RecipeSearch {
         System.out.println("stop - stops the program");
         System.out.println("find name - searches recipes by name");
         System.out.println("find cooking time - searches recipes by cooking time");
+        System.out.println("find ingredient - searches recipes by ingredient");
 
         // enter command loop
         while (true) {
@@ -100,6 +103,12 @@ public class RecipeSearch {
                 System.out.print("Max cooking time: ");
                 int maxCookingTime = Integer.valueOf(inputScanner.nextLine());
                 recipeList.findRecipeByMaxCookingTime(maxCookingTime);
+            }
+            
+            if (command.equals("find ingredient")){
+                System.out.print("Ingredient: ");
+                String ingredientToFind = inputScanner.nextLine();
+                recipeList.findRecipeByIngredient(ingredientToFind);
             }
 
             if (command.equals("stop")) {

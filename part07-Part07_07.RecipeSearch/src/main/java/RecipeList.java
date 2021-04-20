@@ -6,7 +6,6 @@ public class RecipeList {
     private ArrayList<Recipe> recipeList = new ArrayList<>();
 
     public RecipeList() {
-
     }
 
     public void addRecipe(Recipe recipe) {
@@ -32,6 +31,15 @@ public class RecipeList {
         System.out.println("\nRecipes: ");
         for (Recipe iteratedRecipe : recipeList) {
             if (iteratedRecipe.getCookingTime() <= maxCookingTime) {
+                System.out.println(iteratedRecipe);
+            }
+        }
+    }
+
+    public void findRecipeByIngredient(String ingredientToFind) {
+        System.out.println("\nRecipes: ");
+        for (Recipe iteratedRecipe : recipeList) {
+            if (iteratedRecipe.getIngredients().contains(ingredientToFind)) {
                 System.out.println(iteratedRecipe);
             }
         }
