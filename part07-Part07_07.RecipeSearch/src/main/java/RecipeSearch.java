@@ -92,20 +92,20 @@ public class RecipeSearch {
             if (command.equals("list")) {
                 recipeList.printRecipes();
             }
-            
-            if (command.equals("find name")){
+
+            if (command.equals("find name")) {
                 System.out.print("Searched word: ");
                 String searchedWord = inputScanner.nextLine();
                 recipeList.findRecipeByName(searchedWord);
             }
-            
-            if (command.equals("find cooking time")){
+
+            if (command.equals("find cooking time")) {
                 System.out.print("Max cooking time: ");
                 int maxCookingTime = Integer.valueOf(inputScanner.nextLine());
                 recipeList.findRecipeByMaxCookingTime(maxCookingTime);
             }
-            
-            if (command.equals("find ingredient")){
+
+            if (command.equals("find ingredient")) {
                 System.out.print("Ingredient: ");
                 String ingredientToFind = inputScanner.nextLine();
                 recipeList.findRecipeByIngredient(ingredientToFind);
@@ -115,7 +115,5 @@ public class RecipeSearch {
                 break;
             }
         }
-
     }
-
 }
