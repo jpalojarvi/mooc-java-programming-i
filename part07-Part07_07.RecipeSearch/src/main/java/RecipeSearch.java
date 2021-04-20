@@ -14,16 +14,17 @@ public class RecipeSearch {
         Scanner inputScanner = new Scanner(System.in);
 
         // we ask the user what file to read, set it to only recipes.txt initially for testing purposes
-//        System.out.print("File to read: ");
-//        String fileName = inputScanner.nextLine();
+        System.out.print("File to read: ");
+        String fileName = inputScanner.nextLine();
         // variables needed for parsing the file
         String recipeName = "";
-        int cookingTime;
+        int cookingTime = 0;
         ArrayList<String> ingredients = new ArrayList<>();
+        RecipeList recipeList = new RecipeList();
 
         // we create a scanner for reading the file, set it to read recipes.txt initially for testing purposes
-//        try (Scanner fileScanner = new Scanner(Paths.get(fileName))) {
-        try (Scanner fileScanner = new Scanner(Paths.get("recipes.txt"))) {
+        try (Scanner fileScanner = new Scanner(Paths.get(fileName))) {
+//        try (Scanner fileScanner = new Scanner(Paths.get("recipes.txt"))) {
 
             while (fileScanner.hasNextLine()) {
 
@@ -32,7 +33,14 @@ public class RecipeSearch {
 
                 // we analyse the line that we read:
                 // if row is empty, it's the start of a new recipe OR the end of the file
-                if (row.isBlank()) {
+                if (row.isEmpty()) {
+                    // check that recipeName and cookingTime aren't null, so we can add the properties to a new Recipe-object
+                    if (!recipeName.equals("") && cookingTime != 0) {
+                        // add values to new Recipe-object
+                        Recipe newRecipe = new Recipe(recipeName, cookingTime);
+                        recipeList.addRecipe(newRecipe);
+                    }
+
                     row = fileScanner.nextLine();
                 }
 
@@ -45,7 +53,7 @@ public class RecipeSearch {
                 // if a row starts with a digit, it's a cookingTime
                 if (Character.isDigit(row.charAt(0))) {
                     cookingTime = Integer.valueOf(row);
-                    System.out.println(recipeName + ", cooking time: " + cookingTime);
+//                    System.out.println(recipeName + ", cooking time: " + cookingTime);
                 }
 
                 // if a row starts with Lowercase, it's an ingredient
@@ -53,6 +61,13 @@ public class RecipeSearch {
                     ingredients.add(row);
 //                    System.out.println("List of ingredients: " + ingredients);
                 }
+            }
+
+            // add final recipe
+            if (!recipeName.equals("") && cookingTime != 0) {
+                // add functionality to create new recipe here...
+                Recipe newRecipe = new Recipe(recipeName, cookingTime);
+                recipeList.addRecipe(newRecipe);
             }
 
         } catch (Exception e) {
@@ -71,9 +86,7 @@ public class RecipeSearch {
             String command = inputScanner.nextLine();
 
             if (command.equals("list")) {
-//                for (int i = 0; i < recipes.size(); i++) {
-//                    System.out.println(recipes.getRecipeName(i) + ", cooking time: " + recipes.getCookingTime(i));
-//                }
+                recipeList.printRecipes();
             }
 
             if (command.equals("stop")) {
