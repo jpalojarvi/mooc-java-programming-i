@@ -19,14 +19,21 @@ public class RecipeList {
         }
     }
 
-    public void findRecipe(String searchedWord) {
+    public void findRecipeByName(String searchedWord) {
         System.out.println("\nRecipes: ");
-        for (Recipe iteratedRecipe : recipeList){
-            if (iteratedRecipe.getRecipeName().contains(searchedWord))
+        for (Recipe iteratedRecipe : recipeList) {
+            if (iteratedRecipe.getRecipeName().contains(searchedWord)) {
                 System.out.println(iteratedRecipe);
+            }
         }
     }
-    
-    
-    
+
+    public void findRecipeByMaxCookingTime(int maxCookingTime) {
+        System.out.println("\nRecipes: ");
+        for (Recipe iteratedRecipe : recipeList) {
+            if (iteratedRecipe.getCookingTime() <= maxCookingTime) {
+                System.out.println(iteratedRecipe);
+            }
+        }
+    }
 }

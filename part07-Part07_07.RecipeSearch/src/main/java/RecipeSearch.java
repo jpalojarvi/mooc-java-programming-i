@@ -79,11 +79,11 @@ public class RecipeSearch {
         System.out.println("list - lists the recipes");
         System.out.println("stop - stops the program");
         System.out.println("find name - searches recipes by name");
-        System.out.println("");
+        System.out.println("find cooking time - searches recipes by cooking time");
 
         // enter command loop
         while (true) {
-            System.out.print("Enter command: ");
+            System.out.print("\nEnter command: ");
             String command = inputScanner.nextLine();
 
             if (command.equals("list")) {
@@ -93,7 +93,13 @@ public class RecipeSearch {
             if (command.equals("find name")){
                 System.out.print("Searched word: ");
                 String searchedWord = inputScanner.nextLine();
-                recipeList.findRecipe(searchedWord);
+                recipeList.findRecipeByName(searchedWord);
+            }
+            
+            if (command.equals("find cooking time")){
+                System.out.print("Max cooking time: ");
+                int maxCookingTime = Integer.valueOf(inputScanner.nextLine());
+                recipeList.findRecipeByMaxCookingTime(maxCookingTime);
             }
 
             if (command.equals("stop")) {
