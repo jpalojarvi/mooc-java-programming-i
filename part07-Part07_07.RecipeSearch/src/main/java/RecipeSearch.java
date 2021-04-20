@@ -78,6 +78,7 @@ public class RecipeSearch {
         System.out.println("Commands: ");
         System.out.println("list - lists the recipes");
         System.out.println("stop - stops the program");
+        System.out.println("find name - searches recipes by name");
         System.out.println("");
 
         // enter command loop
@@ -87,6 +88,12 @@ public class RecipeSearch {
 
             if (command.equals("list")) {
                 recipeList.printRecipes();
+            }
+            
+            if (command.equals("find name")){
+                System.out.print("Searched word: ");
+                String searchedWord = inputScanner.nextLine();
+                recipeList.findRecipe(searchedWord);
             }
 
             if (command.equals("stop")) {

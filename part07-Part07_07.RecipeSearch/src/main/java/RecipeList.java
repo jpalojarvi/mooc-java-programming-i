@@ -18,6 +18,14 @@ public class RecipeList {
             System.out.println(iteratedRecipe);
         }
     }
+
+    public void findRecipe(String searchedWord) {
+        System.out.println("\nRecipes: ");
+        for (Recipe iteratedRecipe : recipeList){
+            if (iteratedRecipe.getRecipeName().contains(searchedWord))
+                System.out.println(iteratedRecipe);
+        }
+    }
     
     
     
