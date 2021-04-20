@@ -9,6 +9,9 @@ public class mainProgram {
         // as a parameter
 
         Scanner scan = new Scanner(System.in);
+        TextUI ui = new TextUI(scan);
+        
+        ui.start();
 
     }
 
