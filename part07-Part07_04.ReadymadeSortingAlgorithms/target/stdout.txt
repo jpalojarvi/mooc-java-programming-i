@@ -1,0 +1,8 @@
+Before sorting:[2, 1, 3, 0]
+After sorting:[0, 1, 2, 3]
+Before sorting:[x, a, b, d]
+After sorting:[a, b, d, x]
+Before sorting: [3, 2, 0, 1]
+After sorting:[0, 1, 2, 3]
+Before sorting: [d, b, a, c]
+After sorting:[a, b, c, d]
